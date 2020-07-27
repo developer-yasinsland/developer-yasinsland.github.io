@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>Test Calc</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
+            * {
+                text-align:center;
+            }
+            .styling {
+                background-color: lightblue;
+                font-family: 'Metal Mania', cursive;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Trying the calculator</h1>
+        <form>
+            Tell me which numbers to process on<br><br>
+            <input type="number" id="Firstnumber" placeholder="First Number"/><br>
+            <input type="number" id="Secondnumber" placeholder="Second Number"/>
+            <br><br>
+            <select id="process">Choose the process
+                <option value="darb">Multiplication</option>
+                <option value="qisma">Division</option>
+                <option value="gam3">Addition</option>
+                <option value="tar7">Substraction</option>
+            </select><br>
+        </form><hr>
+        <button id="submit">Submit</button>
+        <div>The answer must appear <strong id="placeOfData">here exactly</strong></div>
+        <script>
+            //hh
+            var button = document.getElementById("submit");
+            var calculate = function() {
+                var num = document.getElementById("Firstnumber").value;
+                num1 = parseFloat(num);
+                num = document.getElementById("Secondnumber").value;
+                num2 = parseFloat(num);
+                var process = document.getElementById("process").value;
+                switch(process) {
+                    case "darb" :
+                        var answer = num1 * num2;
+                        break;
+                    case "qisma" :
+                        var answer = num1 / num2;
+                        break;
+                    case "gam3" :
+                        var answer = num1 + num2;
+                        break;
+                    case "tar7" :
+                        var answer = num1 - num2;
+                }
+                var theHTML = '<br>So as I told you the answer is ... <em id="ans">';
+                theHTML += answer;
+                theHTML += "</em>";
+                let data = document.getElementById("placeOfData");
+                data.innerHTML = theHTML;
+                data.className = "styling";
+            };
+            button.addEventListener("click", calculate)
+            /*
+            let ans;
+            var num1 = prompt("Please enter the first number in the calculations", "number");
+            num1 = Number(num1);
+            var num2 = prompt("Please enter the second number in the calculations", "number");
+            num2 = Number(num2);
+            var process = prompt("Please enter the process from \n Multiplication \n Division \n Addition \n Substraction", "process");
+            if (process === "Multiplication") {
+                ans = num1 * num2;
+            }
+            else if (process === "Division") {
+                ans = num1 / num2;
+            }
+            else if (process === "Substraction") {
+                ans = num1 - num2;
+            }
+            else if (process === "Addition") {
+                ans = num1 + num2;
+            }
+            alert("The answer is "+ans);
+            var consec = (confirm("Is "+ans+" the right answer ?"))? true : false;
+            if(consec) {
+                var El = document.getElementById("placeOfData");
+                var att = document.createAttribute("title");
+                att.value = "This is supposed to be the answer";
+                El.setAttributeNode(att);
+            }
+            */
+        </script>
+    </body>
+</html>
